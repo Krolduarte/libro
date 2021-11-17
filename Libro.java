@@ -14,7 +14,7 @@ public class Libro {
     private String titulo;
     private int numeroPaginas;
     private String numeroReferencia;
-  
+    private int vecesPrestado;
 
     /**
      * Fija el autor y el titulo del libro a los dados como parametro
@@ -25,13 +25,14 @@ public class Libro {
         titulo = tituloLibro;
         numeroPaginas = numeroDePaginas;
         numeroReferencia = "";
-       
+        vecesPrestado = 0;
+
     }
-    
+
     public String getAutor(){
         return autor;
     }
-    
+
     public String getTitulo(){
         return titulo;
     }
@@ -39,47 +40,57 @@ public class Libro {
     public void imprimeAutor(){
         System.out.println(autor);
     }
-   
+
     public void imprimeTitulo(){
         System.out.println(titulo);
     }
-    
+
     public int getNumeroPaginas(){
         return numeroPaginas;
     }
-    
+
     public void setNumeroReferencia( String numeroDeReferencia){
-        numeroReferencia = numeroDeReferencia;
-    }
-    
-    public void imprimirDetalles(){
-        if (numeroReferencia !=""){
-             String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + "," + "Numero de referencia: " + numeroReferencia + " .";
-        System.out.println(detalles);
+        if(numeroReferencia.length() >= 3 ){
+            numeroReferencia = numeroDeReferencia;
         }
         else{
-            String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + "," + "Numero de referencia: ZZZ";
-        System.out.println(detalles);
+            System.out.println("Numero de referencia debe tener minimo 3 caracteres");
         }
-        
-    }
-    
-    public String getDetalles(){
-        if (numeroReferencia != ""){
-             String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + "," + "Numero de referencia: " + numeroReferencia + " .";
-        return(detalles);
-        }
-        else{
-            String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + ","+ "Numero de referencia: ZZZ";
-        return(detalles);
-        }
-    }
-    
-    
-    
-    public String getNumeroReferencia(){
-        return numeroReferencia;
+
     }
 
-    
+    public void imprimirDetalles(){
+        if (numeroReferencia !=""){
+            String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + "," + "Numero de referencia: " + numeroReferencia + "Veces prestado: " + vecesPrestado + ".";
+            System.out.println(detalles);
+        }
+        else{
+            String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + "," + "Numero de referencia: ZZZ "+ "Veces prestado: " + vecesPrestado + ".";
+            System.out.println(detalles);
+        }
+
+    }
+
+    public String getDetalles(){
+        if (numeroReferencia != ""){
+            String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + "," + "Numero de referencia: " + numeroReferencia + "Veces prestado: " + vecesPrestado + ".";
+            return(detalles);
+        }
+        else{
+            String detalles = "Titulo: " + titulo + "," + "Autor: " + autor + ", " + "Paginas: " + numeroPaginas + ","+ "Numero de referencia: ZZZ " + "Veces prestado: " + vecesPrestado + ".";
+            return(detalles);
+        }
+    }
+
+    public String getNumeroReferencia(){
+        return numeroReferencia;        
+    }
+
+    public void prestar(){
+        vecesPrestado = vecesPrestado + 1;
+    }
+
+    public int getVecesPrestado(){
+        return vecesPrestado;
+    }
 }
